@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js",
+    "dev": "cross-env NODE_ENV=development nodemon src/server.js",
+    "start": "cross-env NODE_ENV=production node src/server.js",
     "prepare": "husky"
   },
   "keywords": [],
@@ -13,9 +13,12 @@
   "license": "ISC",
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^20.0.0"
+    "@commitlint/config-conventional": "^20.0.0",
+    "nodemon": "^3.1.11"
   },
   "dependencies": {
+    "cross-env": "^10.1.0",
+    "dotenv-flow": "^4.1.0",
     "husky": "^9.1.7"
   }
 }
