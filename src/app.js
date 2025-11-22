@@ -5,11 +5,22 @@ const globalErrorHandler = require("./middlewares/globalErrorHandler");
 const responseMessage = require("./constants/responseMessage");
 const httpError = require("./utils/httpError");
 const helmet = require("helmet");
+const cors = require("cors");
+const config = require("./configs/config");
 
 const app = express();
 
 // Json Middleware
 app.use(express.json());
+
+// CORS Middleware
+app.use(
+  cors({
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    origin: config.CLIENT_URL,
+    credentials: true,
+  })
+);
 
 // Security Middleware
 app.use(helmet());
