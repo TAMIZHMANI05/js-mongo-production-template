@@ -1,12 +1,13 @@
 const app = require("./app");
 const config = require("./configs/config");
 const logger = require("./utils/logger");
-
+const { initRateLimiter } = require("./configs/rateLimiter");
 const server = app.listen(config.PORT);
 
 (() => {
   try {
-    // eslint-disable-next-line no-console
+    initRateLimiter();
+    logger.info("RATE_LIMITER_INITIALIZED");
     logger.info(`APPLICATION_STARTED`, {
       meta: {
         PORT: config.PORT,
