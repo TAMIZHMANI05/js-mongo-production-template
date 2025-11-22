@@ -1,14 +1,14 @@
-const httpResponse = require('../utils/httpResponse')
-const responseMessage = require('../constants/responseMessage')
-const httpError = require('../utils/httpError')
-const quicker = require('../utils/quicker')
+const httpResponse = require('../utils/httpResponse');
+const responseMessage = require('../constants/responseMessage');
+const httpError = require('../utils/httpError');
+const quicker = require('../utils/quicker');
 
 module.exports = {
     self: (req, res, next) => {
         try {
-            httpResponse(req, res, 200, responseMessage.SUCCESS)
+            httpResponse(req, res, 200, responseMessage.SUCCESS);
         } catch (err) {
-            httpError(next, err, req, 500)
+            httpError(next, err, req, 500);
         }
     },
     health: (req, res, next) => {
@@ -17,10 +17,10 @@ module.exports = {
                 systemHealth: quicker.getSystemHealth(),
                 applicationHealth: quicker.getApplicationHealth(),
                 timestamp: Date.now()
-            }
-            httpResponse(req, res, 200, responseMessage.SUCCESS, healthData)
+            };
+            httpResponse(req, res, 200, responseMessage.SUCCESS, healthData);
         } catch (err) {
-            httpError(next, err, req, 500)
+            httpError(next, err, req, 500);
         }
     }
-}
+};

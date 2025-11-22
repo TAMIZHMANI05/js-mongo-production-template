@@ -1,5 +1,5 @@
-const { totalmem, loadavg, freemem } = require('os')
-const config = require('../configs/config')
+const { totalmem, loadavg, freemem } = require('os');
+const config = require('../configs/config');
 
 module.exports = {
     getSystemHealth: () => {
@@ -7,7 +7,7 @@ module.exports = {
             cpuUsage: loadavg(),
             totalMemory: `${(totalmem() / 1024 / 1024).toFixed(2)} MB`,
             freeMemory: `${(freemem() / 1024 / 1024).toFixed(2)} MB`
-        }
+        };
     },
     getApplicationHealth: () => {
         return {
@@ -17,6 +17,6 @@ module.exports = {
                 heapTotal: `${(process.memoryUsage().heapTotal / 1024 / 1024).toFixed(2)} MB`,
                 heapUsed: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`
             }
-        }
+        };
     }
-}
+};
