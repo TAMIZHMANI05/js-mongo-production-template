@@ -20,7 +20,7 @@ module.exports = (err, req, statusCode = 500) => {
     trace: err instanceof Error ? { error: err.stack } : null,
   };
 
-  // logger.error(`CONTROLLER_ERROR`, { meta: errorObj });
+  logger.error(`CONTROLLER_ERROR`, { meta: errorObj });
 
   //Production check
   if (config.ENV === EApplicationEnvironment.PRODUCTION) {

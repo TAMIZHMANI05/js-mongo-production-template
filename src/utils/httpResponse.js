@@ -16,7 +16,7 @@ module.exports = (req, res, statusCode, message, data) => {
   };
 
   // Log
-//   logger.info(`CONTROLLER_RESPONSE`, { meta: response });
+  logger.info(`CONTROLLER_RESPONSE`, { meta: response });
 
   //Production check
   if (config.ENV === EApplicationEnvironment.PRODUCTION) {
