@@ -11,11 +11,12 @@ module.exports = {
             httpError(next, err, req, 500);
         }
     },
-    health: (req, res, next) => {
+    health: async (req, res, next) => {
         try {
             const healthData = {
                 systemHealth: quicker.getSystemHealth(),
                 applicationHealth: quicker.getApplicationHealth(),
+                dbHealth: await quicker.getDBHealth(),
                 timestamp: Date.now()
             };
             httpResponse(req, res, 200, responseMessage.SUCCESS, healthData);

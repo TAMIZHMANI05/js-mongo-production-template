@@ -3,11 +3,20 @@ const config = require('./configs/config');
 const logger = require('./utils/logger');
 const { initRateLimiter } = require('./configs/rateLimiter');
 const server = app.listen(config.PORT);
+const databaseService = require('./configs/database');
 
-(() => {
+(async () => {
     try {
         initRateLimiter();
         logger.info('RATE_LIMITER_INITIALIZED');
+
+        const connection = await databaseService.connect();
+        logger.info(`DATABASE_CONNECTION`, {
+            meta: {
+                CONNECTION_NAME: connection.name
+            }
+        });
+
         logger.info(`APPLICATION_STARTED`, {
             meta: {
                 PORT: config.PORT,
