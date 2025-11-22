@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   SUCCESS: "Success",
   SOMETHING_WENT_WRONG: "Something went wrong",
   NOTFOUND: (ENTITY) => `'${ENTITY}' not found`,
